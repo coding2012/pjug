@@ -1,83 +1,591 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+<head>
+<title>PJUG Vert.x Presentation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="css/kickstart.css"
+  media="all" />
+<!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<!-- CUSTOM STYLES -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/kickstart.js"></script>
+<style type="text/css">
+body {
+  overflow-y: scroll;
+}
+</style>
+<!-- KICKSTART -->
+</head>
+<body>
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <div class="grid">
+    <!-- ===================================== END HEADER ===================================== -->
 
-    <title>Vert.x Presentation by coding2012</title>
-  </head>
+    <p></p>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>Vert.x Presentation</h1>
-        <h2></h2>
-        <a href="https://github.com/coding2012/pjug" class="button"><small>View project on</small>GitHub</a>
+    <ul class="tabs left">
+      <li><a href="#pjug">PJUG Vert.x</a></li>
+      <li><a href="#contents-1">Contents</a></li>
+      <li><a href="#contents-2">...</a></li>
+      <li><a href="#involved">Who's Involved?</a></li>
+      <li><a href="#vertx-1">Vert.x</a></li>
+      <li><a href="#vertx-2">...</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#links">Links and Guides</a></li>
+    </ul>
+
+    <div id="pjug" class="tab-content">
+      <img alt="PJUG" src="pjug.gif" />
+
+      <div class="grid flex clearfix">
+        <div class="col_3"></div>
+
+        <div class="col_6 center">
+          <img alt="Vert.x" src="logo-white-big.png" />
+          <h3>Asynchronous Application Development on the JVM</h3>
+        </div>
       </div>
-    </header>
+      <p>June 18, 2013</p>
+      <p>Ravi Luthra</p>
+    </div>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+    <div id="contents-1" class="tab-content">
+      <h1>Contents</h1>
+      <hr />
+      <h3>What we're focusing on today</h3>
+      <ul>
+        <li><h4>Vert.x 2.0 - who, what, how, why, when</h4></li>
+        <li><h4>Some demos and fun interactions.</h4></li>
+        <li><h4>How to get started!!!</h4></li>
+      </ul>
+    </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+    <div id="contents-2" class="tab-content">
+      <h1>Contents</h1>
+      <hr />
+      <h3>Not focusing on...</h3>
+      <ul>
+        <li><h4>Vert.x vs Node.js vs Socket.IO vs Java EE vs X</h4></li>
+        <li><h4>Performance (it's fast :-)</h4></li>
+      </ul>
+      <h3>But feel free to ask questions</h3>
+    </div>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+    <div id="involved" class="tab-content">
+      <h1>Who's Involved</h1>
+      <div class="grid flex">
+        <div class="col_4 center">
+          <img alt="Tim Fox" src="tfox.jpg" />
+        </div>
+        <div class="col_4 center">
+          <img alt="Pidster" src="pidster.jpg" style="width: 160px;" />
+        </div>
+        <div class="col_4 center">
+          <img alt="normanmaurer" src="normanm.jpg"
+            style="width: 160px;" />
+        </div>
+      </div>
+      <h3>Project Founder Tim Fox (purplefox)</h3>
+      <ul>
+        <li>Background in high performance messaging software
+          (Founder of HornetQ and Lead of JBoss messaging, Worked on
+          RabbitMQ)</li>
+        <li>Founded project while at VMWare</li>
+        <li>Moved back to Red Hat - VMWare has agreed to move
+          Vert.x to the Eclipse foundation to prevent "the
+          Hudson/Jenkins" scenario</li>
+      </ul>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+      <h3>Stuart Williams (pidster)</h3>
+      <ul>
+        <li>Committer from VMWare co-developed portions of Vert.x
+          with Tim Fox</li>
+      </ul>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+      <h3>Norman Maurer</h3>
+      <ul>
+        <li>Core Netty developer</li>
+        <li>Author of Netty in Action</li>
+      </ul>
+      <h3>Scott Horn</h3>
+      <ul>
+        <li>Other committers - UK, Australia, US</li>
+        <li><a href="https://github.com/vert-x/vert.x/contributors">Mix
+            of VMWare, Red Hat and Other Software Companies</a></li>
+      </ul>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+    </div>
+    <div id="vertx-1" class="tab-content">
+      <h1>What is Vert.x?</h1>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+      <blockquote>
+        <p>Vert.x is the framework for the next generation of
+          asynchronous, effortlessly scalable, concurrent applications.
+        </p>
+        <p>Vert.x is an event driven application framework that runs
+          on the JVM - a run-time with real concurrency and unrivalled
+          performance. Vert.x then exposes the API in Ruby, Java,
+          Groovy, JavaScript and Python. So you choose what language you
+          want to use. Scala and Clojure support is on the roadmap too.</p>
+      </blockquote>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+      <a href="http://vert-x.github.io/manual.html">Source</a>
+      <hr />
+      <h3>The inspiration for the project came from two main areas:</h3>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+      <ol>
+        <li><h5>The growing interest in non blocking,
+            asynchronous approaches to application design motivated by
+            scalability.</h5></li>
+        <li><h5>The recent trend towards stripped down
+            simplicity in APIs and a rejection of complexity that had
+            dominated application platforms in the previous 10 or more
+            years.</h5></li>
+      </ol>
+      <a href="http://eclipse.org/proposals/rt.vertx/">Source</a>
+    </div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+    <div id="vertx-2" class="tab-content">
+      <h1>What is Vert.x?</h1>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+      <div class="grid flex">
+        <div class="col_9">
+          <h4>Runtime Concepts</h4>
+          <ul>
+            <li>Verticle: Basic execution unit of Vert.x</li>
+            <li>Module: Collection of Verticles</li>
+            <li>Vert.x Instances are Clusterable</li>
+          </ul>
 
-        <aside id="sidebar">
-          <a href="https://github.com/coding2012/pjug/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/coding2012/pjug/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+          <h4>Features</h4>
+          <ul>
+            <li><b>Polyglot</b>: Java, JavaScript (Rhino),
+              CoffeeScript, Ruby (JRuby), Python (Jython), Groovy, Scala
+              and others coming soon</li>
+            <li><b>Concurrency</b>: Multi-threaded event system,
+              but each verticle instance is never multi-threaded.</li>
+            <li><b>Async</b>: APIs are designed to accept callbacks
+              for anything that blocks.</li>
+          </ul>
 
-          <p class="repo-owner"><a href="https://github.com/coding2012/pjug"></a> is maintained by <a href="https://github.com/coding2012">coding2012</a>.</p>
+          <h4>Event Bus</h4>
+          <ul>
+            <li>Publish Subscribe: interested parties subscribe,
+              publisher may publish message to all subscribers.</li>
+            <li>Point to Point: Send message, get a response (and
+              send a response to that!)</li>
+            <li><b>And where this get's interesting: This event
+                bus extends the to the browser.</b></li>
+          </ul>
 
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
+        </div>
+        <div class="col_3">
+          <h4>Core API</h4>
+          <ul>
+            <li>TCP/SSL servers and clients</li>
+            <li>HTTP/HTTPS servers and clients</li>
+            <li>WebSockets servers and clients</li>
+            <li>Accessing the distributed event bus</li>
+            <li>Periodic and one-off timers</li>
+            <li>Buffers</li>
+            <li>Flow control</li>
+            <li>Accessing files on the file system</li>
+            <li>Shared map and sets</li>
+            <li>Accessing configuration</li>
+            <li>SockJS</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="features" class="tab-content">
+      <h4>Features in Depth</h4>
+
+      <ul class="tabs left">
+        <li><a href="#feature-1">Verticles</a></li>
+        <li><a href="#feature-2">Event Bus</a></li>
+        <li><a href="#feature-3">Concurrency</a></li>
+        <li><a href="#feature-4">Modules</a></li>
+        <li><a href="#feature-5">Shared Data</a></li>
+        <li><a href="#feature-6">JS</a></li>
+        <li><a href="#feature-7">Groovy</a></li>
+        <li><a href="#feature-8">CoffeeScript</a></li>
+
+      </ul>
+
+      <div id="feature-1" class="tab-content">
+        <h4>Verticles</h4>
+        <p>Verticles are instantiated by Vert.x, can use the Vert.x
+          API's to compose applications. The start method is called when
+          an instance is created. From here, Verticles will typically
+          call various Vert.x APIs to set up handlers.</p>
+
+        <pre>package org.pjug.vertxpres;
+
+import org.vertx.java.platform.Verticle;
+//            * A Java class can be run from the command line
+//            | vertx run org/pjug/vertxpres/TestVerticle1.java
+//            | (Compilation will happen in vertx)
+//            v 
+public class TestVerticle1 extends Verticle {
+
+    public void start() {
+        getContainer().logger().info("Test Verticle Started!");
+    }
+}</pre>
+        <h5>Create Servers, Set up Timers, use the Vert.x API</h5>
+        <pre>package org.pjug.vertxpres;
+
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.http.HttpServerRequest;
+import org.vertx.java.platform.Verticle;
+
+public class TestVerticle2 extends Verticle {
+
+  public void start() {
+//     * vertx Variable comes from the Verticle class that TestVerticle2
+//     | extends. From here we have access to the rich Async APIs that
+//     | Vert.x provides. This is anywhere from network clients, servers
+//     | file I/O, timers and the shared data structures.
+//     v
+    vertx.createHttpServer()
+//                           * Here's where the Async concepts become
+//                           | clearly visible. There are optional
+//                           | methods on most of the API's the provide
+//                           | a user to pass in a callback.
+//                           v
+        .requestHandler(new Handler&lt;HttpServerRequest&gt;() {
+
+//           * The APIs are designed with Java 8 and other languages
+//           | that support "functional interfaces" that is interfaces
+//           | with a single method. Languages like Java 8 and Groovy
+//           | can instead use a type-hinted closure instead of all
+//           | of the usual boiler plate code.
+//           v
+          @Override
+          public void handle(HttpServerRequest request) {
+//             * The response is part of the request object
+//             | think of this as similar streamlining we get
+//             | from the concepts behind Vert.x - to present
+//             | a simpler application development platform.
+//             | This is a concept Node.js started, and Vert.x
+//             | takes to heart.
+//             |                * For more methods available in the
+//             |                | Vert.x API, please see the manual.
+//             v                v
+            request.response().end("Thanks!");
+          }
+
+        }).listen(8080);    
+    vertx.setTimer(1000, new Handler&lt;Long&gt;() {
+      
+      @Override
+      public void handle(Long event) {
+        container.logger().info("1 second elapsed");
+      }
+    });
+  }
+}</pre>
+        <h5>Worker Verticles</h5>
+        Worker verticles are similar to normal Verticles, but are
+        processed on threads that are blocking sensitive. If many worker
+        threads being to block, it does not halt processing of other
+        waiting work. Worker verticles are generally considered a plan-B
+        for using APIs that have no async capabilities. It's always
+        considered a better option to find an API that supports Async.
+        <p>In addition to supporting blocking calls, worker
+          verticles are also able to make network connections. Normal
+          verticles will throw an exception if a network connection is
+          made in a non-async way.</p>
+
+      </div>
+
+      <div id="feature-2" class="tab-content">
+        <h4>Event Bus</h4>
+        The Vert.x Event Bus is a distributed across the Vert.x cluster
+        (when enabled, and if clustering and used). The event bus is
+        used to encapsulate the concept of a messaging bus. The event
+        bus is the core of how Vert.x distributes work, communicates and
+        integrates various modules and verticles together.
+        <ul>
+          <li>Send/Register <pre>package org.pjug.vertxpres;
+
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.eventbus.Message;
+import org.vertx.java.platform.Verticle;
+
+public class TestVerticle3 extends Verticle {
+
+  public void start() {
+    //     * To access the Event Bus API
+    //     |          * Register a handler (subscription) to an address
+    //     |          | and all messages published will arrive here.
+    //     v          v
+    vertx.eventBus().registerHandler("random", new Handler&lt;Message&lt;Long>>() {
+
+      @Override
+      public void handle(Message&lt;Long> event) {
+        //  * The event object contains a body method to access the primitive
+        //  | value that was sent. 
+        //  |   * The reply method is used to send a message back to the
+        //  |   | caller. This is how communication on the eventBus works,
+        //  |   | send a message, get a reply, which can be repeated any
+        //  |   | number of times until no reply Handler is provided.
+        //  |   |                               * event.body() is the message
+        //  |   |                               | from the original send call
+        //  v   v                               v
+        event.reply((long) (Math.random() * event.body()));
+      }
+    });
+
+    // Do the following every second
+    vertx.setPeriodic(1000, new Handler&lt;Long>() {
+
+      @Override
+      public void handle(Long event) {
+        //                * Send a message to the address random.
+        //                |                        * The optional third
+        //                |                        | parameter is a Handler
+        //                |                        | instance that can receive
+        //                |                        | the reply message.
+        //                v                        v
+        vertx.eventBus().send("random", 1000L, new Handler&lt;Message&lt;Long>>() {
+
+          @Override
+          public void handle(Message&lt;Long> event) {
+            // Once the reply is received, handle is called, event.body()
+            // is the random number sent from the service.
+            container.logger().info(
+                "Random number from random service: " + event.body());
+          }
+        });
+      }
+    });
+  }
+}</pre> <pre>vertx run org/pjug/vertxpres/TestVerticle3.java</pre> <pre>Random number from random service: 145 
+Random number from random service: 307 
+Random number from random service: 10 
+Random number from random service: 774 
+Random number from random service: 52 
+Random number from random service: 471 
+Random number from random service: 84 
+Random number from random service: 416 
+Random number from random service: 449 
+Random number from random service: 445 
+Random number from random service: 662 
+Random number from random service: 645 
+Random number from random service: 607 
+Random number from random service: 619 
+</pre>
+          </li>
+        </ul>
+      </div>
+
+      <div id="feature-3" class="tab-content">
+        <h4>Event Loop</h4>
+        <img alt="concurrency" src="concurrency-vertx.png" />
+        <h4>Blocking Calls in the Event Loop</h4>
+        <img alt="concurrency" src="concurrency-vertx-2.png" />
+        <h4>The golden rule: Don't block the event loop</h4>
+        <img alt="concurrency" src="concurrency-vertx-3.png" />
+      </div>
+
+      <div id="feature-4" class="tab-content">
+        <h4>Modules</h4>
+        <ul>
+          <li>Packaged application or reusable set of verticles or
+            class path.</li>
+          <li>Suitable packaging for application development</li>
+          <li>Re-use simplified by supporting repositories (Maven
+            Center, Bintray, Local)</li>
+          <li>Runtime deployable, deployable via
+            container.deployModule(...) as well as command line vertx
+            runmod ...</li>
+          <li><a
+            href="https://vertxmodulereg-vertxmodulereg.rhcloud.com/">Module
+              Registry</a></li>
+          <li>IDE support through Maven and Gradle build
+            environments</li>
+          <li>Module deployment example <pre>package org.pjug.vertxpres;
+
+import java.util.Date;
+
+import org.vertx.java.core.AsyncResult;
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.eventbus.Message;
+import org.vertx.java.core.json.JsonObject;
+import org.vertx.java.platform.Verticle;
+
+public class TestVerticle4 extends Verticle {
+
+  public void start() {
+
+    //               * Construct a config object for the Module we're deploying
+    //               |  The configuration manual is located on the website
+    //               |  of the module itself. (These are typically github sites)
+    //               v
+    final JsonObject config = new JsonObject();
+    config.putString("db_name", "test");
+    config.putString("address", "vertx.mongopersistor");
+
+    //                       * The module is specified by the name found at the
+    //                       | main Vert.x Module registry. The module is
+    //                       | downloaded at runtime. (the vertx process will
+    //                       | actually fetch this module when the verticle
+    //                       | hits this async operation.
+    //                       v
+    container.deployModule("io.vertx~mod-mongo-persistor~2.0.0-beta2", config,
+        new Handler&lt;AsyncResult&lt;String>>() {
+
+          @Override
+          public void handle(AsyncResult&lt;String> event) {
+            if (event.succeeded()) {
+              // * Once we're sure the persistor has started, we can do
+              // | additional things. In this case we'll just call another
+              // | method that saves a single object in MongoDB. It's important
+              // | to run this code INSIDE this callback handler. If the module
+              // | is not set up when we try to send a message to be persisted
+              // | the message will not go anywhere. (Vert.x just eats messages
+              // | that are sent to addresses that nothing is listening on.
+              // v
+              afterDeploySuccess();
+            } else {
+              container.logger().info(event.result());
+            }
+          }
+        });
+
+  }
+
+  protected void afterDeploySuccess() {
+    JsonObject doc = new JsonObject();
+    doc.putNumber("RandomNumber", Math.random());
+    doc.putString("timestamp", (new Date()).toString());
+
+    JsonObject save = new JsonObject();
+    save.putString("action", "save");
+    save.putString("collection", "test");
+    save.putObject("document", doc);
+    vertx.eventBus().send("vertx.mongopersistor", save, new Handler&lt;Message>() {
+
+      @Override
+      public void handle(Message event) {
+        container.logger().info("Saved: " + event.body());
+      }
+    });
+
+  }
+}
+            </pre></li>
+        </ul>
+      </div>
+
+      <div id="feature-5" class="tab-content">
+        <h4>Shared Data</h4>
+        <ul>
+          <li>Shared data is a memory-based storage facility
+            accessible from the vertx object. <pre>vertx.sharedData()</pre>
+          </li>
+          <li>Stores maps and sets using a String name.</li>
+
+        </ul>
+      </div>
+      <div id="feature-6" class="tab-content">
+        <h5>Start a net server</h5>
+        test1.js
+        <pre>
+//   * Access to the 'vertx' API
+//   |       * Each supported language comes with a language module "shim"
+//   |       | to make vertx programs fit well with the idioms of the language
+//   |       | Here we see require() as is typical in Node.js or any "CommonJS"
+//   |       | environment
+//   v       v
+var vertx = require('vertx');
+var console = require('vertx/console');
+
+// We see the API is often chained. This is typical in environments
+// that support async features
+vertx.createNetServer().connectHandler(function(sock) {
+    console.log("We have a connection");
+    sock.dataHandler(function(buffer) {
+        console.log('RCV: ' + buffer);
+    });
+}).listen(8080);
+</pre>
+        <pre>vertx run test1.js</pre>
+        <pre>telnet localhost 8080</pre>
+      </div>
+      <div id="feature-7" class="tab-content">
+        <h5>Start an HTTP server</h5>
+        test2.groovy
+        <pre>
+// * Note the vertx variable. In groovy this variable is simply added
+// | to the default binding
+// |                                    * Groovy supports closures!, so
+// v                                    v    shall the Groovy vertx shim!
+vertx.createHttpServer().requestHandler { request -&gt;
+    println "A request has arrived on the server!"
+    request.response.putHeader("Content-Type", "text/plain")
+//                   *  end(...) is a way of saying, close the stream and send
+//                   v   this data.
+    request.response.end("Hello!")
+}.listen(8080)
+        </pre>
+
+        <a href="http://localhost:8080/">See it!</a>
+      </div>
+      <div id="feature-8" class="tab-content">
+        <pre>vertx = require('vertx');
+
+vertx.createHttpServer().requestHandler((req) ->
+  req.response.end('&lt;html>&lt;body>&lt;h1>Hello from vert.x!&lt;/h1>&lt;/body>&lt;/html>')
+).listen 8080</pre>
       </div>
     </div>
 
-  
-  </body>
+    <div id="links" class="tab-content">
+      <h1>Handy Links</h1>
+      <p>Download &amp; Installing</p>
+      <ul>
+        <li><a
+          href="https://bintray.com/vertx/downloads/distribution/2.0.0-CR1/files">Super
+            Secret Download Site</a></li>
+        <li><a
+          href="http://vert-x.github.io/vertx20_docs/install.html">Vert.x
+            2.0 Installation</a></li>
+        <li>Bleeding edge<pre>
+git clone git@github.com:vert-x/vert.x.git
+gradle dist
+tar xfz /path/to/vert.x/build/distributions/vert.x-xxxx.tar.gz -C /install_parent</pre>
+          Where xxxx is the version (in my case 2.0.0-CR1). It is also
+          useful to remove the version information from the folder.
+          <p>Create /etc/profile.d/vertx.sh</p> <pre>PATH=$PATH:/install_parent/vert.x-xxxx/bin
+EXPORT PATH</pre>
+        </li>
+      </ul>
+      <p>Developing</p>
+      <ul>
+        <li><a
+          href="http://vert-x.github.io/vertx20_docs/docs.html">Vert.x
+            2.0 Documentation</a> &lt;- Not well known documents location</li>
+      </ul>
+      <p>Modules</p>
+      <ul>
+        <li><a
+          href="https://vertxmodulereg-vertxmodulereg.rhcloud.com/">Module
+            Registry</a></li>
+      </ul>
+    </div>
+
+    <!-- ===================================== START FOOTER ===================================== -->
+  </div>
+  <!-- END GRID-->
+</body>
 </html>
