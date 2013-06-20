@@ -1,0 +1,41 @@
+$(function() {
+var canvas = oCanvas.create({
+	canvas: "#canvas",
+	fps: 60
+});
+
+var button = canvas.display.rectangle({
+	x: canvas.width / 2,
+	y: canvas.width / 5,
+	origin: { x: "center", y: "top" },
+	width: 300,
+	height: 100,
+	fill: "linear-gradient(315deg, #079, #013)",
+	shadow: "0 0 20px rgba(0,0,0, 0.8)"
+});
+canvas.addChild(button);
+
+var increase = true;
+button.bind("click tap", function () {
+	if (increase) {
+		increase = false;
+
+		this.stop().animate({
+			x: canvas.width / 2,
+			y: canvas.height / 1.5,
+			height: 300,
+			rotation: 180
+		});
+	} else {
+		increase = true;
+
+		this.stop().animate({
+			x: canvas.width / 2,
+			y: canvas.width / 5,
+			height: 100,
+			rotation: 0
+		});
+	}
+});
+
+});

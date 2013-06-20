@@ -1,0 +1,5 @@
+{
+  "main":"groovy:org.pjug.vertxpres.ShootAndRun",
+  "auto-redeploy":false,
+  "licenses": ["The Apache Software License Version 2.0"]
+}

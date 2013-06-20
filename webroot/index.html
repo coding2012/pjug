@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<title>Email!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="css/kickstart.css"
+  media="all" />
+<!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<!-- CUSTOM STYLES -->
+<script type="text/javascript"
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/kickstart.js"></script>
+<script src="http://cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
+<script
+  src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.4.0/ocanvas.min.js"></script>
+<script src='js/vertxbus.js'></script>
+<script>
+$(function() {
+	var eb = new vertx.EventBus('/eventbus');
+	eb.onopen = function() {
+	    $('#emailMe').click(function() {
+	        eb.send("sendemail", {
+	            "from" : "nobody@ravacado.com",
+	            "to" : $('#email').val(),
+	            "subject" : "test",
+	            "body" : $('#textArea').val()
+	        });
+	    });
+
+	};
+});
+
+</script>
+<!-- KICKSTART -->
+</head>
+<body>
+
+
+  <div class="grid">
+    <!-- ===================================== END HEADER ===================================== -->
+
+    <div class="grid">
+      <div class="col_12" id="login">
+
+        <h3>Send Email</h3>
+        <p>
+          <input placeholder="Email" type="email" id="email">
+        </p>
+
+        <p>
+	<textarea id="textArea"></textarea>
+        </p>
+
+        <p>
+          <button id="emailMe">Send me something!</button>
+        </p>
+
+
+        <div id="loginMessage"></div>
+      </div>
+      <div class="col_9" id="game"></div>
+    </div>
+
+
+    <!-- ===================================== START FOOTER ===================================== -->
+  </div>
+  <!-- END GRID-->
+
+</body>
+</html>
