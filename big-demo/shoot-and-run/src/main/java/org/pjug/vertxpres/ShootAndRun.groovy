@@ -1,7 +1,5 @@
 package org.pjug.vertxpres
 
-import groovy.transform.TypeChecked.TypeCheckingInfo;
-
 import org.vertx.groovy.core.http.HttpServerRequest;
 import org.vertx.groovy.platform.Verticle
 import org.vertx.java.core.json.JsonObject;
